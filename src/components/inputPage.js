@@ -1,6 +1,5 @@
-import { isDisabled } from "@testing-library/user-event/dist/utils";
-
 function InputPage({inputValue, setInputValue, onClick, setCheckBtn, checkBtn}){
+    
     return(
         <div>
             <input type="text" placeholder="Create Todo" value={inputValue} onChange={(e) => {

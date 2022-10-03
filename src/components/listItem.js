@@ -1,16 +1,18 @@
 import pen from "./images/pen.png";
 import bin from "./images/bin.png";
 
-function ListItem({ list, setList, onClick, handleChangeClick }) {
+
+function ListItem({ list, setList, onDelete, handleChangeClick }) {
+
   return (
     <ul>
-      {list.map((item, index) => {
+      {list.map((item) => {
         return (
-          <li key={index}>
-            <p>{item}</p>
+          <li key={item.id}>
+            <p>{item.title}</p>
             <span>
               <img src={pen} alt="pen" onClick={handleChangeClick}/>
-              <img src={bin} alt="bin" onClick={onClick}/>
+              <img src={bin} alt="bin" onClick={onDelete} />
             </span>
           </li>
         );
