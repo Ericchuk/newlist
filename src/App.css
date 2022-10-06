@@ -48,10 +48,12 @@ article section ul li{
     width:auto;
     background-color: black;
     padding:0px 10px;
+    margin:5px 0;
     border-radius: 5px;
 }
 span{
-    display: block;
+    display: flex;
+    position: relative;
 }
 img{
     width:20px;
@@ -59,4 +61,31 @@ img{
     padding:5px;
     border-radius: 10px;
     margin:0 5px; 
+    cursor: pointer;
+}
+.tooltip{
+    position: absolute;
+    font-size: 12px;
+    margin:5px 0 0 5px;
+    background-color: white;
+    color: black;
+    padding:1px 5px;
+    display: none;
+    /* display: inline-block; */
+}
+.tooltip::after{
+    content: "";
+    position: absolute;
+    top: 0%;
+    left: 3%;
+    margin-top:-10px;
+    border-width: 5px;
+    border-style: solid;
+    border-color:   transparent  transparent white transparent;
+}
+img:hover + .tooltip{
+    display: block;
+}
+.bordered{
+    border-left: 2px solid white;
 }

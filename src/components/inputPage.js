@@ -1,12 +1,12 @@
-function InputPage({inputValue, setInputValue, onClick, setCheckBtn, checkBtn}){
+function InputPage({inputValue, setInputValue, onClick}){
     
     return(
         <div>
             <input type="text" placeholder="Create Todo" value={inputValue} onChange={(e) => {
                 setInputValue(e.target.value)
-                setCheckBtn(true)
+                // setCheckBtn(true)
             }}/>
-            {checkBtn ? <button onClick={onClick}>Add</button> : <button disabled>Add</button>}
+            {inputValue.length > 0 ? <button onClick={onClick}>Add</button> : <button disabled>Add</button>}
         </div>
     )
 }

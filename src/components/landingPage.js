@@ -1,37 +1,51 @@
 import { useState } from "react";
 import InputPage from "./inputPage";
 import ListItem from "./listItem";
-import pen from "./images/pen.png";
-import bin from "./images/bin.png";
 
-let id = 3;
+let nextId = 3;
 
 function LandingPage() {
   const [inputValue, setInputValue] = useState("");
-  const [list, setList] = useState([]);
-  const [checkBtn, setCheckBtn] = useState(false);
+  const [list, setList] = useState([
+    {id: 0, title: "Learn React", isCompleted: false},
+    {id: 1, title: "Learn Context API", isCompleted: false},
+    {id: 2, title: "Learn Hooks", isCompleted: false},
+    {id: 3, title: "Learn Redux", isCompleted: false},
+  ]);
+  const [editValue, setEditValue] = useState("");
 
   function handleAdd() {
-    setList((prev) => [...prev, { id: id++, title: inputValue, pen: pen, bin: bin }]);
+    setList((prev) => [...prev, {id : nextId++, title: inputValue, isCompleted: false}]);
     setInputValue("");
-    setCheckBtn(false);
   }
 
-  
+  function handleCompleted(id){
+    setList((prev) => prev.map((item) => {
+      if(item.id === id){
+        return {...item, isCompleted: !item.isCompleted}
+        
+      }
+      return item
+    }))
+    console.log("jjj", id)
+  }
 
   // delete item from list
-  function handleDelete(id) {
-    // console.log("delete", id)
+//   use the id as a contact point assign an id to each item in the list and filter it, the filter hides the false items and keeps the true. also ensure that the onclick function in listItem receives a function as it value . the function should be an arrow function that calls the onDelete function and passes the id as an argument
+
+  const deleteTask = (id) => {
     setList(list.filter((task) =>
       task.id !== id
     ))
+    // console.log("delete", id);
   }
-
 
   // edit item in list
-  function handleChange(nextList) {
-    console.log("33333333");
+  function handleChange(id) {
+    console.log("edit", id);
+
   }
+
 
   return (
     <section>
@@ -39,14 +53,15 @@ function LandingPage() {
         inputValue={inputValue}
         setInputValue={setInputValue}
         onClick={handleAdd}
-        checkBtn={checkBtn}
-        setCheckBtn={setCheckBtn}
       />
       <ListItem
         list={list}
         setList={setList}
-        onDelete={handleDelete}
+        onDelete={deleteTask}
         handleChangeClick={handleChange}
+        handleCompleted={handleCompleted}
+        editValue={editValue}
+        setEdit={setEditValue}
       />
     </section>
   );
