@@ -73,7 +73,7 @@ ul li p{
     max-width: 70%;
     width:100%;
     overflow: hidden;
-    text-overflow: ellipsis;git a
+    text-overflow: ellipsis;
 }
 span{
     display: flex;
