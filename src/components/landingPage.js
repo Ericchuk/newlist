@@ -15,7 +15,7 @@ function LandingPage() {
   const [editValue, setEditValue] = useState("");
 
   function handleAdd() {
-    setList((prev) => [...prev, {id : nextId++, title: inputValue, isCompleted: false}]);
+    setList((prev) => [{id : nextId++, title: inputValue, isCompleted: false}, ...prev ]);
     setInputValue("");
   }
 
@@ -27,7 +27,7 @@ function LandingPage() {
       }
       return item
     }))
-    console.log("jjj", id)
+    // console.log("jjj", id)
   }
 
   // delete item from list
@@ -45,9 +45,10 @@ function LandingPage() {
     setList((prev) => prev.map((item) => {
       if(item.id === id)
       { 
-        setInputValue(item.title)
-        return { title: inputValue, ...item}
-       
+        setInputValue(item.title) // set the input value upon clicking to the value of the item called
+        return { ...item, title: inputValue} 
+        // return the old items in the list and change the title to the present input value
+        // this would only cause a creation of a new item but it has been updated but you would need to delete the old item 
       }
       return item
     }))
@@ -67,8 +68,6 @@ function LandingPage() {
         onDelete={deleteTask}
         handleChangeClick={handleChange}
         handleCompleted={handleCompleted}
-        editValue={editValue}
-        setEdit={setEditValue}
       />
     </section>
   );

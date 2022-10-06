@@ -1,7 +1,7 @@
 import pen from "./images/pen.png";
 import bin from "./images/bin.png";
 
-function ListItem({ list, setList, onDelete, handleChangeClick, handleCompleted, editValue, setEditValue}) {
+function ListItem({ list, setList, onDelete, handleChangeClick, handleCompleted}) {
   return (
     <ul>
       {list.map((item) => {
