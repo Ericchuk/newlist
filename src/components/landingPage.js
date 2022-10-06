@@ -42,8 +42,15 @@ function LandingPage() {
 
   // edit item in list
   function handleChange(id) {
-    console.log("edit", id);
-
+    setList((prev) => prev.map((item) => {
+      if(item.id === id)
+      { 
+        setInputValue(item.title)
+        return { title: inputValue, ...item}
+       
+      }
+      return item
+    }))
   }
 
 
