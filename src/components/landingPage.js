@@ -12,7 +12,6 @@ function LandingPage() {
     {id: 2, title: "Learn Hooks", isCompleted: false},
     {id: 3, title: "Learn Redux", isCompleted: false},
   ]);
-  const [editValue, setEditValue] = useState("");
 
   function handleAdd() {
     setList((prev) => [{id : nextId++, title: inputValue, isCompleted: false}, ...prev ]);
